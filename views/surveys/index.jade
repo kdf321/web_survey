@@ -21,7 +21,7 @@ block content
             td= moment(survey.createdAt).format('YYYY/MM/DD')
             td
               a.btn.btn-xs.btn-default(href='/surveys/#{survey.id}/edit') 수정
-              |-
+              | 
               a.btn.btn-xs.btn-default(data-id=survey.id, class='delete') 삭제
 
     a.btn.btn-primary(href='/surveys/new') 설문작성
