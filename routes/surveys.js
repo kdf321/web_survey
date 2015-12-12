@@ -3,8 +3,16 @@ var express = require('express'),
     Comment = require('../models/comment');
 var router = express.Router();
 
+function needAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    req.flash('danger', '로그인이 필요합니다.');
+    res.redirect('/signin');
+  }
+}
 /* GET surveys listing. */
-router.get('/', function(req, res, next) {
+router.get('/', needAuth, function(req, res, next) {
   Survey.find({}, function(err, docs) {
     if (err) {
       return next(err);
