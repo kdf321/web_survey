@@ -12,6 +12,7 @@ var passport = require('passport');
 var configAuth = require('./config/auth');
 
 var routes = require('./routes/index');
+var surveys = require('./routes/surveys');
 var users = require('./routes/users');
 var routeAuth = require('./routes/auth');
 
@@ -60,6 +61,7 @@ app.use(function(req, res, next) {
 configAuth(passport);
 
 app.use('/', routes);
+app.use('/surveys', surveys);
 app.use('/users', users);
 routeAuth(app, passport);
 
